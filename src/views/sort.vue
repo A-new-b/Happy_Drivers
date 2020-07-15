@@ -1,26 +1,34 @@
 <template>
-  <div class="home">
+  <v-container fluid>
+    <v-row align="center">
+      <v-col class="d-flex" cols="12" sm="4">
+        <v-select :items="sort_method" label="排序方式" outlined></v-select>
+      </v-col>
+      <v-col class="d-flex" cols="12" sm="4">
+        <p>耗时:</p>
+      </v-col>
+    </v-row>
     <Table :desserts="desserts"></Table>
-  </div>
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
 import Table from "../components/table";
-
 export default {
-  name: "Home",
+  name: "sort",
   components: {
     Table
   },
   data: () => ({
-    desserts: []
+    desserts: [],
+    sort_method: []
   }),
   created() {
-    this.data_init();
+    this.sort_init();
   },
   methods: {
-    data_init() {
+    sort_init() {
+      this.sort_method = ["冒泡排序"];
       this.desserts = [
         { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
         { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
@@ -32,3 +40,5 @@ export default {
   }
 };
 </script>
+
+<style scoped></style>
