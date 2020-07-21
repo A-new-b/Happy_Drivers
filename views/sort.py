@@ -19,10 +19,8 @@ def sort_list():
 @Sort.route('/api/sort/<int:id>', methods=['GET'])
 def sort_id(id):
     try:
-        # interface.init_r()
         time = interface.ExecSort(id)
-        result = interface.DataGet()
-        info = {'time': time, 'result': result}
+        info = {'time': time}
         response = flask.make_response(json.dumps(info), 200)
         return response
     except Exception as e:

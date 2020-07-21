@@ -5,10 +5,13 @@ from models import interface
 Data = flask.Blueprint("Data", __name__)
 
 
-@Data.route('/api/data', methods=['GET'])
+@Data.route('/api/data', methods=['POST'])
 def data():
     try:
-        info = interface.DataGet()
+        post_data = json.loads(flask.request.get_data(as_text=True))
+        start = post_data['start']
+        end = post_data['end']
+        info = interface.DataGetEx(start, end)
         response = flask.make_response(info, 200)
         return response
     except Exception as e:
