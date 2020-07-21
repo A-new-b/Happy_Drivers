@@ -24,7 +24,7 @@ def sort_id(id):
         start = post_data['start']
         end = post_data['end']
         nums = interface.GetRecordCount_i()
-        info = {'time': time, 'nums': nums, 'info': interface.DataGetEx(start, end)}
+        info = {'time': time, 'nums': nums, 'info': interface.DataGetEx_i(start, end)}
         response = flask.make_response(json.dumps(info), 200)
         return response
     except Exception as e:

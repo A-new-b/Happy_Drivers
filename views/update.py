@@ -14,7 +14,7 @@ def upload():
         upload_path = os.path.join(basePath, 'models', 'GTBL.dat')
         print(upload_path)
         f.save(upload_path)
-        return "success",200
+        return "success"
     except Exception as e:
         print(e)
         return 500
