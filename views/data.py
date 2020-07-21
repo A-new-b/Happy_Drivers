@@ -12,6 +12,8 @@ def data():
         start = post_data['start']
         end = post_data['end']
         info = interface.DataGetEx(start, end)
+        nums = interface.GetRecordCount_i()
+        info = {"info": info, "nums": nums}
         response = flask.make_response(info, 200)
         return response
     except Exception as e:

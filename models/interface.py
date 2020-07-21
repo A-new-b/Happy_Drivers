@@ -59,6 +59,17 @@ def DataGetEx(begin, end):  # 从某个位置开始获取
     return str(szBuffer.value, encoding="gb2312")
 
 
+def GetRecordCount_i():  # 获取记录总数 无init
+    # Init(path + "\GTBL.dat")
+    return dll.itf_GetCount()
+
+
+def DataGetEx_i(begin, end):  # 从某个位置开始获取 无init
+    # Init(path + "\GTBL.dat")
+    szBuffer = c_char_p(dll.itf_DataGetEx(begin, end))
+    return str(szBuffer.value, encoding="gb2312")
+
+
 # def init_r():
 #     Init(path + "\GTBL.dat")
 

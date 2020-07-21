@@ -16,11 +16,15 @@ def sort_list():
         return 500
 
 
-@Sort.route('/api/sort/<int:id>', methods=['GET'])
+@Sort.route('/api/sort/<int:id>', methods=['POST'])
 def sort_id(id):
     try:
         time = interface.ExecSort(id)
-        info = {'time': time}
+        post_data = json.loads(flask.request.get_data(as_text=True))
+        start = post_data['start']
+        end = post_data['end']
+        nums = interface.GetRecordCount_i()
+        info = {'time': time, 'nums': nums, 'info': interface.DataGetEx(start, end)}
         response = flask.make_response(json.dumps(info), 200)
         return response
     except Exception as e:
