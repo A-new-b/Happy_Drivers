@@ -10,6 +10,7 @@ Update = flask.Blueprint("Update", __name__)
 def upload():
     try:
         f = flask.request.files['file']
+        g = f
         basePath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  # 当前文件上级目录
         upload_path = os.path.join(basePath, 'models', 'Test.dat')
         f.save(upload_path)
@@ -17,7 +18,7 @@ def upload():
         print(result)
         if result == "suc":
             upload_path = os.path.join(basePath, 'models', 'GTBL.dat')
-            f.save(upload_path)
+            g.save(upload_path)
             return {"message": "success"}
         else:
             return flask.make_response(json.dumps({"message": "文件错误"}), 403)
