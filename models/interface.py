@@ -77,12 +77,13 @@ def DataGetEx_i(begin, end):  # 从某个位置开始获取 无init
 
 
 def DataSearch(id):  # 暴力
+    Init(path + "\GTBL.dat")
     szBuffer = c_char_p(dll.itf_DataSearch(id))
-    return szBuffer.value
+    return str(szBuffer.value, encoding="gb2312")
 
-
-def init_r():
-    print(Init(path + "\GTBL.dat"))
+#
+# def init_r():
+#     print(Init(path + "\GTBL.dat"))
 
 # print(Init(path + "\GTBL.dat"))
 # print(SortMethodGet())
