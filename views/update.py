@@ -17,6 +17,7 @@ def upload():
         print(result)
         if result == "suc":
             path = os.path.join(basePath, 'models', 'GTBL.dat')
+            os.remove(path)
             os.rename(upload_path,path)
             return {"message": "success"}
         else:
