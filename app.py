@@ -4,6 +4,7 @@ from views.sort import Sort
 from views.update import Update
 from views.search import Search
 from views.map import Map
+from views.fileManager import fileManage
 app = Flask(__name__)
 
 
@@ -12,6 +13,7 @@ app.register_blueprint(Sort)
 app.register_blueprint(Update)
 app.register_blueprint(Search)
 app.register_blueprint(Map)
+app.register_blueprint(fileManage)
 
 if __name__ == '__main__':
     app.run()
