@@ -1,6 +1,5 @@
 import flask
 import json
-from models import interface
 import os
 
 Update = flask.Blueprint("Update", __name__)
