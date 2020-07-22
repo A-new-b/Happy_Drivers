@@ -24,6 +24,9 @@ dll.itf_DataGetEx.argtype = [c_int, c_int]
 dll.itf_DataSearch.restype = c_char_p
 dll.itf_DataSearch.argtype = [c_int]
 
+dll.itf_DataSearch2.restype = c_char_p
+dll.itf_DataSearch2.argtype = [c_int]
+
 dll.itf_GetLastTick.restype = c_int
 dll.itf_GetLastTick.argtype = []
 
@@ -54,6 +57,10 @@ def DataSearch(id):
     szBuffer = c_char_p(dll.itf_DataSearch(id))
     return szBuffer.value
     #return str(szBuffer.value, encoding="gb2312")
+
+def DataSearch2(id):
+    szBuffer = c_char_p(dll.itf_DataSearch2(id))
+    return szBuffer.value
 
 def GetLastTick():
     return dll.itf_GetLastTick()

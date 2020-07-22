@@ -30,6 +30,9 @@ dll.itf_DataSearch.argtype = [c_int]
 dll.itf_GetLastTick.restype = c_int
 dll.itf_GetLastTick.argtype = []
 
+dll.itf_DataSearch2.restype = c_char_p
+dll.itf_DataSearch2.argtype = [c_int]
+
 
 def Init(path):
     szBufferIn = create_unicode_buffer(path)
@@ -82,6 +85,12 @@ def DataGetEx_i(begin, end):  # 从某个位置开始获取 无init
 def DataSearch(id):  # 暴力
     Init(path + "\GTBL.dat")
     szBuffer = c_char_p(dll.itf_DataSearch(id))
+    return str(szBuffer.value, encoding="gb2312")
+
+
+def DataSearch2(id):# 二分查找
+    Init(path + "\GTBL.dat")
+    szBuffer = c_char_p(dll.itf_DataSearch2(id))
     return str(szBuffer.value, encoding="gb2312")
 
 
