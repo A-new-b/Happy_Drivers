@@ -3,7 +3,7 @@ from wolframclient.language import wl, wlexpr
 import os
 
 # spath = "\"C:\\\\Users\\\\krusl\\\\tempk.jpg\""
-
+# spath = "\"C:\\\\Users\\\\Administrator\\\\Desktop\\\\Happy_Drivers\\\\img\\\\temp.jpg\""
 path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 file_path = os.path.join(path, "img", "temp.jpg")
 # print(file_path)
