@@ -34,57 +34,38 @@ def Init(path):
     return str(szBufferOut.value, encoding="gb2312")
 
 
-def Test():
-    return Init(path + "\Test.dat")
-
-
 def DataGet():
-    Init(path + "\GTBL.dat")
     szBuffer = c_char_p(dll.itf_DataGet())
-    return szBuffer.value.decode(encoding='gb2312')
+    return str(szBuffer.value, encoding="gb2312")
 
 
 def SortMethodGet():
     szBuffer = c_char_p(dll.itf_SortMethodGet())
-    return szBuffer.value.decode(encoding='gb2312')
+    return str(szBuffer.value, encoding="gb2312")
 
 
 def ExecSort(id):
-    Init(path + "\GTBL.dat")
     return dll.itf_ExecSort(id)
 
 
-def GetRecordCount():  # 获取记录总数
-    Init(path + "\GTBL.dat")
+def GetRecordCount():
     return dll.itf_GetCount()
 
 
-def DataGetEx(begin, end):  # 从某个位置开始获取
-    Init(path + "\GTBL.dat")
+def DataGetEx(begin, end):
     szBuffer = c_char_p(dll.itf_DataGetEx(begin, end))
     return str(szBuffer.value, encoding="gb2312")
 
 
-def GetRecordCount_i():  # 获取记录总数 无init
-    # Init(path + "\GTBL.dat")
-    return dll.itf_GetCount()
-
-
-def DataGetEx_i(begin, end):  # 从某个位置开始获取 无init
-    # Init(path + "\GTBL.dat")
-    szBuffer = c_char_p(dll.itf_DataGetEx(begin, end))
-    return str(szBuffer.value, encoding="gb2312")
-
-
-def DataSearch(id):  # 暴力
+def DataSearch(id):
     szBuffer = c_char_p(dll.itf_DataSearch(id))
-    return szBuffer.value
+    return str(szBuffer.value, encoding="gb2312")
 
 
-def init_r():
-    print(Init(path + "\GTBL.dat"))
-
-# print(Init(path + "\GTBL.dat"))
+print(Init(path + "\GTBL.dat"))
+# #print(DataGet())
+# print(GetRecordCount())
 # print(SortMethodGet())
+# print(DataGetEx(0, 5))
 
-# print(DataGetEx(1, 20))
+print(DataSearch(11852))
