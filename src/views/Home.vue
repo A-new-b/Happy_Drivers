@@ -1,33 +1,32 @@
 <template>
   <div class="home">
-    <Table :desserts="desserts"></Table>
+    <Table></Table>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Table from "../components/table";
+// import { getData } from "../api/normal/normal";
 
 export default {
   name: "Home",
   components: {
     Table
   },
-  data: () => ({
-    desserts: []
-  }),
+  data: () => ({}),
   created() {
     this.data_init();
   },
   methods: {
     data_init() {
-      this.desserts = [
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" }
-      ];
+      // getData()
+      //   .then(res => {
+      //     if (res.status === 200) {
+      //       console.log(JSON.parse(res.data));
+      //     }
+      //   })
+      //   .catch();
     }
   }
 };

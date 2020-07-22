@@ -39,9 +39,19 @@ export const asyncRouterMap = [
         }
       },
       {
+        path: "/update",
+        name: "更新",
+        component: () => import("../views/update"),
+        meta: {
+          permission: ["1", "2", "3", "4", "5"],
+          icon: "vertical_align_top",
+          group: false
+        }
+      },
+      {
         path: "/map",
         name: "地图",
-        component: () => import("../views/map"),
+        component: () => import("../views/mapView"),
         meta: {
           permission: ["1", "2", "3", "4", "5"],
           icon: "map",

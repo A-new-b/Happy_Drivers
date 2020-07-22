@@ -2,40 +2,70 @@
   <v-container fluid>
     <v-row align="center">
       <v-col class="d-flex" cols="12" sm="4">
-        <v-select :items="sort_method" label="排序方式" outlined></v-select>
+        <v-select
+          v-model="selected_method"
+          :items="sort_method"
+          label="排序方式"
+          outlined
+          @change="methodChange"
+        ></v-select>
       </v-col>
       <v-col class="d-flex" cols="12" sm="4">
-        <p>耗时:</p>
+        <p>耗时:{{ cost }}ms</p>
       </v-col>
     </v-row>
-    <Table :desserts="desserts"></Table>
+    <Table ref="table"></Table>
   </v-container>
 </template>
 
 <script>
 import Table from "../components/table";
+import { getSortMethod, getSortResult } from "../api/normal/normal";
+
 export default {
   name: "sort",
   components: {
     Table
   },
   data: () => ({
-    desserts: [],
-    sort_method: []
+    sort_method: [],
+    selected_method: "",
+    cost: ""
   }),
   created() {
     this.sort_init();
   },
   methods: {
     sort_init() {
-      this.sort_method = ["冒泡排序"];
-      this.desserts = [
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" },
-        { linkId: 1234, brunch: 2, disPClass: 3, roadName: "青年大街" }
-      ];
+      getSortMethod()
+        .then(res => {
+          if (res.status === 200) {
+            // this.sort_method = res.data;
+            for (let i = 0; i < res.data.length; i++) {
+              this.sort_method.push(res.data[i].name);
+            }
+          }
+        })
+        .catch();
+    },
+    methodChange() {
+      this.$refs.table.loading(true);
+      let i = this.sort_method.indexOf(this.selected_method) + 1;
+      let time = {
+        start: this.$refs.table.start,
+        end: this.$refs.table.end
+      };
+      getSortResult(i, time)
+        .then(res => {
+          if (res.status === 200) {
+            this.cost = res.data.time;
+            this.$refs.table.renew(JSON.parse(res.data.info));
+          }
+        })
+        .catch()
+        .finally(() => {
+          this.$refs.table.loading(false);
+        });
     }
   }
 };

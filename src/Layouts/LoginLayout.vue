@@ -3,153 +3,189 @@
     <notification></notification>
     <v-layout>
       <div style="width: 100%">
-        <v-card-title
-          style="display: flex;flex-direction: row;align-items: center;
-                background: linear-gradient(to right, #25506B, aqua);
-                -webkit-background-clip: text;
-                color: transparent;                "
-          class="text-h4"
-        >
-          电子地图管理系统
-        </v-card-title>
-
-        <v-card-text class="backgroud">
-          <template v-if="screenWidth > 700">
-            <v-img
-              :src="require('../assets/background2.jpg')"
-              :width="width"
-              style="display: flex;flex-direction: row;justify-content: end;align-items:center;"
-              :aspect-ratio="changeImg()"
-            >
-              <div
-                style="display: flex;flex-direction: row;justify-content: center;margin-top: 3%"
+        <template v-if="screenWidth > 700">
+          <v-card>
+            <v-img src="../assets/background2.jpg">
+              <v-card-title
+                style="display: flex;flex-direction: row;align-items: center;
+                    color: white"
+                class="text-h4"
               >
-                <v-card
-                  class="loginpanel"
-                  :width="width * 0.612"
-                  max-width="350"
-                  style="margin-right: 5%"
-                >
-                  <v-card-title>欢迎登录地图管理系统</v-card-title>
+                电子地图管理系统
+              </v-card-title>
 
-                  <v-card-text>
-                    <v-form ref="form" lazy-validation>
-                      <v-text-field
-                        v-model="username"
-                        type="text"
-                        placeholder="用户名"
-                        prepend-inner-icon="person"
-                        :rules="rules"
-                      ></v-text-field>
+              <v-card-text class="backgroud">
+                <!--                <v-img-->
+                <!--                  :src="require('../assets/background2.jpg')"-->
+                <!--                  :width="width"-->
+                <!--                  style="display: flex;flex-direction: row;justify-content: end;align-items:center;"-->
+                <!--                  :aspect-ratio="changeImg()"-->
+                <!--                >-->
+                <!--                <div-->
+                <!--                  style="display: flex;flex-direction: row;justify-content: center;margin-top: 3%"-->
+                <!--                >-->
+                <!--                  <v-card-->
+                <!--                    class="loginpanel"-->
+                <!--                    :width="width * 0.612"-->
+                <!--                    max-width="350"-->
+                <!--                    style="margin-right: 5%"-->
+                <!--                  >-->
+                <!--                    <v-card-title>欢迎登录地图管理系统</v-card-title>-->
 
-                      <v-text-field
-                        v-model="password"
-                        placeholder=" 密码 "
-                        prepend-inner-icon="lock"
-                        :append-icon="show ? 'visibility' : 'visibility_off'"
-                        :type="show ? 'text' : 'password'"
-                        @click:append="show = !show"
-                        autocomplete="new-password"
-                        :rules="rules"
-                      ></v-text-field>
+                <!--                    <v-card-text>-->
+                <!--                      <v-form ref="form" lazy-validation>-->
+                <!--                        <v-text-field-->
+                <!--                          v-model="username"-->
+                <!--                          type="text"-->
+                <!--                          placeholder="用户名"-->
+                <!--                          prepend-inner-icon="person"-->
+                <!--                          :rules="rules"-->
+                <!--                        ></v-text-field>-->
 
-                      <div
-                        style="display: flex;flex-direction: row;flex-wrap: nowrap"
-                      >
-                        <v-text-field
-                          v-model="yzm"
-                          placeholder="验证码"
-                          type="text"
-                          prepend-inner-icon="info"
-                          style="margin-right: 5%"
-                          :rules="rules"
-                        ></v-text-field>
-                        <!--                        <v-img-->
-                        <!--                                :src="img"-->
-                        <!--                                max-width="100"-->
-                        <!--                                contain-->
-                        <!--                                @click="codechange"-->
-                        <!--                        ></v-img>-->
-                      </div>
-                      <v-btn
-                        color="primary"
-                        block
-                        dark
-                        miyn-height="46"
-                        @click="Login"
-                        >登录</v-btn
-                      >
-                    </v-form>
-                  </v-card-text>
-                </v-card>
-              </div>
-            </v-img>
-          </template>
+                <!--                        <v-text-field-->
+                <!--                          v-model="password"-->
+                <!--                          placeholder=" 密码 "-->
+                <!--                          prepend-inner-icon="lock"-->
+                <!--                          :append-icon="show ? 'visibility' : 'visibility_off'"-->
+                <!--                          :type="show ? 'text' : 'password'"-->
+                <!--                          @click:append="show = !show"-->
+                <!--                          autocomplete="new-password"-->
+                <!--                          :rules="rules"-->
+                <!--                        ></v-text-field>-->
 
-          <template v-else>
-            <v-card
-              class="loginpanel"
-              max-width="350"
-              style="background: rgba(255, 255, 255, 0.75);"
-            >
-              <v-card-title>欢迎登录</v-card-title>
-
-              <v-card-text>
-                <v-form ref="form" lazy-validation>
-                  <v-text-field
-                    v-model="username"
-                    type="text"
-                    placeholder="用户名"
-                    prepend-inner-icon="person"
-                    :rules="rules"
-                  ></v-text-field>
-
-                  <v-text-field
-                    v-model="password"
-                    placeholder=" 密码 "
-                    prepend-inner-icon="lock"
-                    :append-icon="show ? 'visibility' : 'visibility_off'"
-                    :type="show ? 'text' : 'password'"
-                    @click:append="show = !show"
-                    autocomplete="new-password"
-                    :rules="rules"
-                  ></v-text-field>
-
-                  <div
-                    style="display: flex;flex-direction: row;flex-wrap: nowrap"
-                  >
-                    <v-text-field
-                      v-model="yzm"
-                      placeholder="验证码"
-                      type="text"
-                      prepend-inner-icon="info"
-                      style="margin-right: 5%"
-                      :rules="rules"
-                    ></v-text-field>
-                    <!--                    <v-img-->
-                    <!--                            :src="img"-->
-                    <!--                            max-width="100"-->
-                    <!--                            contain-->
-                    <!--                            @click="codechange"-->
-                    <!--                    ></v-img>-->
-                  </div>
-                  <v-btn
-                    color="primary"
-                    block
-                    dark
-                    miyn-height="46"
-                    @click="Login"
-                    >登录</v-btn
-                  >
-                </v-form>
+                <!--                        <div-->
+                <!--                          style="display: flex;flex-direction: row;flex-wrap: nowrap"-->
+                <!--                        >-->
+                <!--                          <v-text-field-->
+                <!--                            v-model="yzm"-->
+                <!--                            placeholder="验证码"-->
+                <!--                            type="text"-->
+                <!--                            prepend-inner-icon="info"-->
+                <!--                            style="margin-right: 5%"-->
+                <!--                            :rules="rules"-->
+                <!--                          ></v-text-field>-->
+                <!--                          &lt;!&ndash;                        <v-img&ndash;&gt;-->
+                <!--                          &lt;!&ndash;                                :src="img"&ndash;&gt;-->
+                <!--                          &lt;!&ndash;                                max-width="100"&ndash;&gt;-->
+                <!--                          &lt;!&ndash;                                contain&ndash;&gt;-->
+                <!--                          &lt;!&ndash;                                @click="codechange"&ndash;&gt;-->
+                <!--                          &lt;!&ndash;                        ></v-img>&ndash;&gt;-->
+                <!--                        </div>-->
+                <!--                        <v-btn-->
+                <!--                          color="primary"-->
+                <!--                          block-->
+                <!--                          dark-->
+                <!--                          miyn-height="46"-->
+                <!--                          @click="Login"-->
+                <!--                          >登录</v-btn-->
+                <!--                        >-->
+                <!--                      </v-form>-->
+                <!--                    </v-card-text>-->
+                <!--                  </v-card>-->
+                <!--                </div>-->
+                <!--                </v-img>-->
               </v-card-text>
-            </v-card>
-          </template>
-        </v-card-text>
+            </v-img>
+          </v-card>
+        </template>
+        <template v-else>
+          <v-img src="../assets/background3.jpg">
+            <v-card-title
+              style="display: flex;flex-direction: row;align-items: center;
+                    color: white"
+              class="text-h4"
+            >
+              电子地图管理系统
+            </v-card-title>
+
+            <v-card-text class="backgroud">
+              <!--                <v-img-->
+              <!--                  :src="require('../assets/background2.jpg')"-->
+              <!--                  :width="width"-->
+              <!--                  style="display: flex;flex-direction: row;justify-content: end;align-items:center;"-->
+              <!--                  :aspect-ratio="changeImg()"-->
+              <!--                >-->
+              <!--                <div-->
+              <!--                  style="display: flex;flex-direction: row;justify-content: center;margin-top: 3%"-->
+              <!--                >-->
+              <!--                  <v-card-->
+              <!--                    class="loginpanel"-->
+              <!--                    :width="width * 0.612"-->
+              <!--                    max-width="350"-->
+              <!--                    style="margin-right: 5%"-->
+              <!--                  >-->
+              <!--                    <v-card-title>欢迎登录地图管理系统</v-card-title>-->
+
+              <!--                    <v-card-text>-->
+              <!--                      <v-form ref="form" lazy-validation>-->
+              <!--                        <v-text-field-->
+              <!--                          v-model="username"-->
+              <!--                          type="text"-->
+              <!--                          placeholder="用户名"-->
+              <!--                          prepend-inner-icon="person"-->
+              <!--                          :rules="rules"-->
+              <!--                        ></v-text-field>-->
+
+              <!--                        <v-text-field-->
+              <!--                          v-model="password"-->
+              <!--                          placeholder=" 密码 "-->
+              <!--                          prepend-inner-icon="lock"-->
+              <!--                          :append-icon="show ? 'visibility' : 'visibility_off'"-->
+              <!--                          :type="show ? 'text' : 'password'"-->
+              <!--                          @click:append="show = !show"-->
+              <!--                          autocomplete="new-password"-->
+              <!--                          :rules="rules"-->
+              <!--                        ></v-text-field>-->
+
+              <!--                        <div-->
+              <!--                          style="display: flex;flex-direction: row;flex-wrap: nowrap"-->
+              <!--                        >-->
+              <!--                          <v-text-field-->
+              <!--                            v-model="yzm"-->
+              <!--                            placeholder="验证码"-->
+              <!--                            type="text"-->
+              <!--                            prepend-inner-icon="info"-->
+              <!--                            style="margin-right: 5%"-->
+              <!--                            :rules="rules"-->
+              <!--                          ></v-text-field>-->
+              <!--                          &lt;!&ndash;                        <v-img&ndash;&gt;-->
+              <!--                          &lt;!&ndash;                                :src="img"&ndash;&gt;-->
+              <!--                          &lt;!&ndash;                                max-width="100"&ndash;&gt;-->
+              <!--                          &lt;!&ndash;                                contain&ndash;&gt;-->
+              <!--                          &lt;!&ndash;                                @click="codechange"&ndash;&gt;-->
+              <!--                          &lt;!&ndash;                        ></v-img>&ndash;&gt;-->
+              <!--                        </div>-->
+              <!--                        <v-btn-->
+              <!--                          color="primary"-->
+              <!--                          block-->
+              <!--                          dark-->
+              <!--                          miyn-height="46"-->
+              <!--                          @click="Login"-->
+              <!--                          >登录</v-btn-->
+              <!--                        >-->
+              <!--                      </v-form>-->
+              <!--                    </v-card-text>-->
+              <!--                  </v-card>-->
+              <!--                </div>-->
+              <!--                </v-img>-->
+            </v-card-text>
+          </v-img>
+        </template>
       </div>
-      <v-footer style="width: 100%;position: fixed;bottom: 0;"
-        >Copyright © 2020</v-footer
+      <v-footer
+        style="width: 100%;position: fixed;bottom: 0;display: flex;flex-direction: column;background: rgba(255,255,255,0)"
       >
+        <div
+          style="display: flex;flex-direction: column;justify-content: center;width: 250px;background: rgba(255,255,255,0.25);margin-bottom: 70px;"
+        >
+          <v-btn outlined color="white" style="font-size: large" @click="Login">
+            开始查看
+          </v-btn>
+        </div>
+        <div style="color: white">
+          Copyright © 2020
+        </div>
+      </v-footer>
     </v-layout>
   </v-container>
 </template>

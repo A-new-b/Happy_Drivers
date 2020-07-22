@@ -1,0 +1,59 @@
+<template v-else>
+              <v-card
+                class="loginpanel"
+                max-width="350"
+                style="background: rgba(255, 255, 255, 0.75);"
+              >
+                <v-card-title>欢迎登录</v-card-title>
+
+                <v-card-text>
+                  <v-form ref="form" lazy-validation>
+                    <v-text-field
+                      v-model="username"
+                      type="text"
+                      placeholder="用户名"
+                      prepend-inner-icon="person"
+                      :rules="rules"
+                    ></v-text-field>
+
+                    <v-text-field
+                      v-model="password"
+                      placeholder=" 密码 "
+                      prepend-inner-icon="lock"
+                      :append-icon="show ? 'visibility' : 'visibility_off'"
+                      :type="show ? 'text' : 'password'"
+                      @click:append="show = !show"
+                      autocomplete="new-password"
+                      :rules="rules"
+                    ></v-text-field>
+
+                    <div
+                      style="display: flex;flex-direction: row;flex-wrap: nowrap"
+                    >
+                      <v-text-field
+                        v-model="yzm"
+                        placeholder="验证码"
+                        type="text"
+                        prepend-inner-icon="info"
+                        style="margin-right: 5%"
+                        :rules="rules"
+                      ></v-text-field>
+                      <!--                    <v-img-->
+                      <!--                            :src="img"-->
+                      <!--                            max-width="100"-->
+                      <!--                            contain-->
+                      <!--                            @click="codechange"-->
+                      <!--                    ></v-img>-->
+                    </div>
+                    <v-btn
+                      color="primary"
+                      block
+                      dark
+                      miyn-height="46"
+                      @click="Login"
+                      >登录</v-btn
+                    >
+                  </v-form>
+                </v-card-text>
+              </v-card>
+            </template>
