@@ -24,7 +24,9 @@ def sort_id(id):
         if id == 1:
             info = interface.DataSearch(data)
             print(info)
-            response = flask.make_response(info, 200)
+            time = interface.GetLastTick()
+            info = {"info": info, "time": time}
+            response = flask.make_response(json.dumps(info), 200)
             return response
         else:
             return flask.make_response({"message": "方法错误"}, 200)

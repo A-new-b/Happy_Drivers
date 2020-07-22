@@ -2,11 +2,13 @@
 from views import map
 from models import wolframLink
 
-list_data = [
-    {"linkId": 1234},
-    {"linkId": 2341},
-    {"linkId": 234}
-]
+list_data = [{"linkId": 811},
+             {"linkId": 846},
+             {"linkId": 2133},
+             {"linkId": 2134},
+             {"linkId": 11583},
+             {"linkId": 11852}]
 
 info = map.switch_nums(list_data)
-wolframLink.Generate(info)
+print(info)
+# wolframLink.Generate(info)
