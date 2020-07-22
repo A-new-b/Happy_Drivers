@@ -12,5 +12,6 @@ file_path = os.path.join(path, "img", "temp.jpg")
 def Generate(s):
     k = WolframLanguageSession()
     print(k.evaluate(wlexpr("Export[" + file_path + "," + s + "]")))
+    # print(k.evaluate(wlexpr("Export[" + spath + "," + s + "]")))
     k.stop()
-    return file_path
+    return {"path":"temp.jpg"}
