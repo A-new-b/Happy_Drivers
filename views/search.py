@@ -8,7 +8,7 @@ Search = flask.Blueprint("Search", __name__)
 @Search.route('/api/search/list', methods=['GET'])
 def search_list():
     try:
-        list_search = [{"id": 1, "name": "暴力搜索"}]
+        list_search = [{"id": 1, "name": "暴力搜索"},{"id":2,"name":"二分搜索"}]
         response = flask.make_response(json.dumps(list_search), 200)
         return response
     except Exception as e:
@@ -23,6 +23,13 @@ def sort_id(id):
         data = post_data['data']
         if id == 1:
             info = interface.DataSearch(data)
+            print(info)
+            time = interface.GetLastTick()
+            info = {"info": info, "time": time}
+            response = flask.make_response(json.dumps(info), 200)
+            return response
+        elif id == 2:
+            info = interface.DataSearch2(data)
             print(info)
             time = interface.GetLastTick()
             info = {"info": info, "time": time}
