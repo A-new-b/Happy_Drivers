@@ -169,6 +169,7 @@ export default {
         .catch()
         .finally(() => {
           this.loading_status = false;
+          this.selected = [];
         });
     }
   }
