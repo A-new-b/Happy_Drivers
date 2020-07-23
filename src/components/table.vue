@@ -20,6 +20,19 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <div
+      style="display: flex;flex-direction: row;justify-content: center;align-items: center"
+      v-if="img_flag"
+    >
+      <v-img
+        :src="img_src"
+        max-width="500"
+        max-height="300"
+        aspect-ratio="1.4"
+        contain
+      >
+      </v-img>
+    </div>
     <v-data-table
       v-model="selected"
       :headers="headers"
@@ -76,9 +89,8 @@
 </template>
 
 <script>
-import { getData } from "../api/normal/normal";
+import { getData, mapCreate } from "../api/normal/normal";
 import { notify } from "./notification";
-
 export default {
   name: "Table",
   props: ["ifSelect"],
@@ -95,7 +107,9 @@ export default {
     end: 20,
     nums: "",
     dialog: "",
-    selected: []
+    selected: [],
+    img_flag: false,
+    img_src: ""
   }),
   created() {
     this.table_init();
@@ -145,6 +159,16 @@ export default {
     },
     map_build() {
       console.log(this.selected);
+      this.loading_status = true;
+      mapCreate(this.selected)
+        .then(res => {
+          this.img_src = "/api/img?imgUrl=" + res.data.path;
+          this.img_flag = true;
+        })
+        .catch()
+        .finally(() => {
+          this.loading_status = false;
+        });
     }
   }
 };
