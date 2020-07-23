@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row align="center">
-      <v-col class="d-flex" cols="12" sm="4">
+      <v-col class="d-flex" cols="12" sm="3">
         <v-select
           v-model="selected_search"
           :items="search_method"
@@ -9,7 +9,7 @@
           outlined
         ></v-select>
       </v-col>
-      <v-col class="d-flex" cols="12" sm="4">
+      <v-col class="d-flex" cols="12" sm="3">
         <v-text-field
           v-model="search"
           append-icon="mdi-magnify"
@@ -18,7 +18,10 @@
           outlined
         ></v-text-field>
       </v-col>
-      <v-col class="d-flex" cols="12" sm="4">
+      <v-col class="d-flex" cols="6" sm="3">
+        <p>耗时：{{ time }}ms</p>
+      </v-col>
+      <v-col class="d-flex" cols="6" sm="3">
         <div
           style="display: flex;flex-direction: row;justify-content: center;align-items: center"
         >
@@ -27,11 +30,6 @@
           </v-btn>
         </div>
       </v-col>
-      <!--      <v-col class="d-flex" cols="12" sm="4">-->
-      <!--        <p>-->
-      <!--          耗时：ms-->
-      <!--        </p>-->
-      <!--      </v-col>-->
     </v-row>
     <Table ref="table"></Table>
   </v-container>
@@ -49,7 +47,8 @@ export default {
   data: () => ({
     search_method: [],
     search: "",
-    selected_search: ""
+    selected_search: "",
+    time: ""
   }),
   created() {
     this.search_init();
@@ -77,7 +76,8 @@ export default {
           if (res.status === 200) {
             // let list = [res.data];
             // console.log(list);
-            this.$refs.table.renew(res.data);
+            this.time = res.data.time;
+            this.$refs.table.renew(JSON.parse(res.data.info));
           }
         })
         .catch()

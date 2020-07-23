@@ -56,8 +56,7 @@
           <v-toolbar-title>数据表格</v-toolbar-title>
           <v-icon @click="dialog_change(true)">help</v-icon>
           <v-spacer></v-spacer>
-          <p>第</p>
-          <div style="width: 60px;height: 50px">
+          <div style="width: 60px;height: 40px">
             <v-text-field
               v-model="start"
               label="条数"
@@ -66,8 +65,8 @@
               dense
             ></v-text-field>
           </div>
-          <p>条到第</p>
-          <div style="width: 60px;height: 50px">
+          <v-icon>trending_flat</v-icon>
+          <div style="width: 60px;height: 40px">
             <v-text-field
               v-model="end"
               label="条数"
@@ -76,7 +75,6 @@
               dense
             ></v-text-field>
           </div>
-          <p>条</p>
           <v-spacer></v-spacer>
           <v-btn color="primary" @click="table_init">确定</v-btn>
           <div v-if="ifSelect" style="margin-left: 1%">
@@ -121,7 +119,7 @@ export default {
       } else {
         this.loading_status = true;
         let time = {
-          start: Number(this.start),
+          start: Number(this.start) - 1,
           end: Number(this.end)
         };
 

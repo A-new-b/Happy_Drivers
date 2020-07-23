@@ -147,12 +147,8 @@
               </v-btn>
             </template>
             <v-list>
-              <v-list-item @click="dialogContent = true">
-                <v-list-item-title>修改密码</v-list-item-title>
-              </v-list-item>
-
               <v-list-item @click="loginout">
-                <v-list-item-title>退出登录</v-list-item-title>
+                <v-list-item-title>退出</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
