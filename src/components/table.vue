@@ -162,7 +162,10 @@ export default {
       this.loading_status = true;
       mapCreate(this.selected)
         .then(res => {
-          this.img_src = "/api/img?imgUrl=" + res.data.path;
+          // this.img_src = "https://picsum.photos/510/300?random";
+          const num = Math.ceil(Math.random() * 100); // 生成一个随机数（防止缓存）
+          this.img_src = "/api/img?imgUrl=" + res.data.path + "&&random=" + num;
+          console.log(res);
           this.img_flag = true;
         })
         .catch()
