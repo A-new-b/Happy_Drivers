@@ -15,75 +15,11 @@
               </v-card-title>
 
               <v-card-text class="backgroud">
-                <!--                <v-img-->
-                <!--                  :src="require('../assets/background2.jpg')"-->
-                <!--                  :width="width"-->
-                <!--                  style="display: flex;flex-direction: row;justify-content: end;align-items:center;"-->
-                <!--                  :aspect-ratio="changeImg()"-->
-                <!--                >-->
-                <!--                <div-->
-                <!--                  style="display: flex;flex-direction: row;justify-content: center;margin-top: 3%"-->
-                <!--                >-->
-                <!--                  <v-card-->
-                <!--                    class="loginpanel"-->
-                <!--                    :width="width * 0.612"-->
-                <!--                    max-width="350"-->
-                <!--                    style="margin-right: 5%"-->
-                <!--                  >-->
-                <!--                    <v-card-title>欢迎登录地图管理系统</v-card-title>-->
-
-                <!--                    <v-card-text>-->
-                <!--                      <v-form ref="form" lazy-validation>-->
-                <!--                        <v-text-field-->
-                <!--                          v-model="username"-->
-                <!--                          type="text"-->
-                <!--                          placeholder="用户名"-->
-                <!--                          prepend-inner-icon="person"-->
-                <!--                          :rules="rules"-->
-                <!--                        ></v-text-field>-->
-
-                <!--                        <v-text-field-->
-                <!--                          v-model="password"-->
-                <!--                          placeholder=" 密码 "-->
-                <!--                          prepend-inner-icon="lock"-->
-                <!--                          :append-icon="show ? 'visibility' : 'visibility_off'"-->
-                <!--                          :type="show ? 'text' : 'password'"-->
-                <!--                          @click:append="show = !show"-->
-                <!--                          autocomplete="new-password"-->
-                <!--                          :rules="rules"-->
-                <!--                        ></v-text-field>-->
-
-                <!--                        <div-->
-                <!--                          style="display: flex;flex-direction: row;flex-wrap: nowrap"-->
-                <!--                        >-->
-                <!--                          <v-text-field-->
-                <!--                            v-model="yzm"-->
-                <!--                            placeholder="验证码"-->
-                <!--                            type="text"-->
-                <!--                            prepend-inner-icon="info"-->
-                <!--                            style="margin-right: 5%"-->
-                <!--                            :rules="rules"-->
-                <!--                          ></v-text-field>-->
-                <!--                          &lt;!&ndash;                        <v-img&ndash;&gt;-->
-                <!--                          &lt;!&ndash;                                :src="img"&ndash;&gt;-->
-                <!--                          &lt;!&ndash;                                max-width="100"&ndash;&gt;-->
-                <!--                          &lt;!&ndash;                                contain&ndash;&gt;-->
-                <!--                          &lt;!&ndash;                                @click="codechange"&ndash;&gt;-->
-                <!--                          &lt;!&ndash;                        ></v-img>&ndash;&gt;-->
-                <!--                        </div>-->
-                <!--                        <v-btn-->
-                <!--                          color="primary"-->
-                <!--                          block-->
-                <!--                          dark-->
-                <!--                          miyn-height="46"-->
-                <!--                          @click="Login"-->
-                <!--                          >登录</v-btn-->
-                <!--                        >-->
-                <!--                      </v-form>-->
-                <!--                    </v-card-text>-->
-                <!--                  </v-card>-->
-                <!--                </div>-->
-                <!--                </v-img>-->
+                <v-img
+                  src="../assets/nlog.png"
+                  width="350px"
+                  style="  background: rgba(255, 255, 255, 0.20);"
+                ></v-img>
               </v-card-text>
             </v-img>
           </v-card>
@@ -97,78 +33,6 @@
             >
               电子地图管理系统
             </v-card-title>
-
-            <v-card-text class="backgroud">
-              <!--                <v-img-->
-              <!--                  :src="require('../assets/background2.jpg')"-->
-              <!--                  :width="width"-->
-              <!--                  style="display: flex;flex-direction: row;justify-content: end;align-items:center;"-->
-              <!--                  :aspect-ratio="changeImg()"-->
-              <!--                >-->
-              <!--                <div-->
-              <!--                  style="display: flex;flex-direction: row;justify-content: center;margin-top: 3%"-->
-              <!--                >-->
-              <!--                  <v-card-->
-              <!--                    class="loginpanel"-->
-              <!--                    :width="width * 0.612"-->
-              <!--                    max-width="350"-->
-              <!--                    style="margin-right: 5%"-->
-              <!--                  >-->
-              <!--                    <v-card-title>欢迎登录地图管理系统</v-card-title>-->
-
-              <!--                    <v-card-text>-->
-              <!--                      <v-form ref="form" lazy-validation>-->
-              <!--                        <v-text-field-->
-              <!--                          v-model="username"-->
-              <!--                          type="text"-->
-              <!--                          placeholder="用户名"-->
-              <!--                          prepend-inner-icon="person"-->
-              <!--                          :rules="rules"-->
-              <!--                        ></v-text-field>-->
-
-              <!--                        <v-text-field-->
-              <!--                          v-model="password"-->
-              <!--                          placeholder=" 密码 "-->
-              <!--                          prepend-inner-icon="lock"-->
-              <!--                          :append-icon="show ? 'visibility' : 'visibility_off'"-->
-              <!--                          :type="show ? 'text' : 'password'"-->
-              <!--                          @click:append="show = !show"-->
-              <!--                          autocomplete="new-password"-->
-              <!--                          :rules="rules"-->
-              <!--                        ></v-text-field>-->
-
-              <!--                        <div-->
-              <!--                          style="display: flex;flex-direction: row;flex-wrap: nowrap"-->
-              <!--                        >-->
-              <!--                          <v-text-field-->
-              <!--                            v-model="yzm"-->
-              <!--                            placeholder="验证码"-->
-              <!--                            type="text"-->
-              <!--                            prepend-inner-icon="info"-->
-              <!--                            style="margin-right: 5%"-->
-              <!--                            :rules="rules"-->
-              <!--                          ></v-text-field>-->
-              <!--                          &lt;!&ndash;                        <v-img&ndash;&gt;-->
-              <!--                          &lt;!&ndash;                                :src="img"&ndash;&gt;-->
-              <!--                          &lt;!&ndash;                                max-width="100"&ndash;&gt;-->
-              <!--                          &lt;!&ndash;                                contain&ndash;&gt;-->
-              <!--                          &lt;!&ndash;                                @click="codechange"&ndash;&gt;-->
-              <!--                          &lt;!&ndash;                        ></v-img>&ndash;&gt;-->
-              <!--                        </div>-->
-              <!--                        <v-btn-->
-              <!--                          color="primary"-->
-              <!--                          block-->
-              <!--                          dark-->
-              <!--                          miyn-height="46"-->
-              <!--                          @click="Login"-->
-              <!--                          >登录</v-btn-->
-              <!--                        >-->
-              <!--                      </v-form>-->
-              <!--                    </v-card-text>-->
-              <!--                  </v-card>-->
-              <!--                </div>-->
-              <!--                </v-img>-->
-            </v-card-text>
           </v-img>
         </template>
       </div>
