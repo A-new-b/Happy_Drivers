@@ -8,7 +8,13 @@ list_data = [{"linkId": 811},
              {"linkId": 2134},
              {"linkId": 11583},
              {"linkId": 11852}]
-
+list_data_2 = [{"linkId": 811},
+             {"linkId": 846},
+             {"linkId": 2133},
+             {"linkId": 2134},
+             ]
 info = map.switch_nums(list_data)
+print(info)
+info=map.switch_nums(list_data_2)
 print(info)
 # wolframLink.Generate(info)

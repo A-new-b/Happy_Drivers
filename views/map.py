@@ -2,6 +2,7 @@ import flask
 import json
 import random
 import os
+import copy
 from models import wolframLink
 
 Map = flask.Blueprint("Map", __name__)
@@ -33,8 +34,9 @@ def json_decode(map_list_k):
 
 
 def rand_position(list_data, nums):
-    map_list_r = map_list[::-1]
+    map_list_r = copy.deepcopy(map_list[::-1])
     # print(map_list_r)
+    print(map_list)
     map_list_k = []
     position_list = []
     for i in list_data:
@@ -77,7 +79,7 @@ def upload():
         length = len(post_data)
         res = rand_position(post_data, length)
         path = wolframLink.Generate(res)
-        return {"path": "temp.jpg"}
+        return path
     except Exception as e:
         print(e)
         return 500
