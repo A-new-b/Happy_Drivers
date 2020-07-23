@@ -31,7 +31,9 @@
                     color: white"
               class="text-h4"
             >
-              电子地图管理系统
+              <div>
+                电子地图管理系统
+              </div>
             </v-card-title>
           </v-img>
         </template>
@@ -47,7 +49,7 @@
           </v-btn>
         </div>
         <div style="color: white">
-          Copyright © 2020
+          Copyright © 2020 绝对能行小组
         </div>
       </v-footer>
     </v-layout>
